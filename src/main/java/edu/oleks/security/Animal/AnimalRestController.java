@@ -1,4 +1,4 @@
-package edu.oleks.security.Animal_;
+package edu.oleks.security.Animal;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
