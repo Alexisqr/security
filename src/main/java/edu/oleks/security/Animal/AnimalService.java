@@ -1,4 +1,4 @@
-package edu.oleks.security.Item;
+package edu.oleks.security.Animal;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;

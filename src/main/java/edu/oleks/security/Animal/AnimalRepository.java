@@ -1,4 +1,4 @@
-package edu.oleks.security.Item;
+package edu.oleks.security.Animal;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package edu.oleks.security.Item;
+package edu.oleks.security.Animal;
 
 /*
 @author   oleksandra
