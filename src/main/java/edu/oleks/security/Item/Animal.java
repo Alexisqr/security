@@ -8,6 +8,7 @@ package edu.oleks.security.Item;
 @since 19.02.2025 - 22.41
 */
 
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,6 +22,7 @@ public class Animal {
     private int age;
     private String sex;
     private String description;
+    @Getter
     private String location;
     private String type;
     private String photos;
@@ -84,10 +86,6 @@ public class Animal {
 
     public String getSex() {
         return sex;
-    }
-
-    public String getLocation() {
-        return location;
     }
 
     public String getType() {
