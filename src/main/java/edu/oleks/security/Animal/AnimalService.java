@@ -47,7 +47,28 @@ public class AnimalService {
         return animalRepository.save(item);
     }
 
-    public Animal update(Animal item) {
-        return animalRepository.save(item);
+    public Animal update(String id, Animal animalDetails) {
+        Animal animal = animalRepository.findById(id).orElse(null);
+
+        if (animal != null) {
+            if (animalDetails.getName() != null) animal.setName(animalDetails.getName());
+            if (animalDetails.getAge() != 0) animal.setAge(animalDetails.getAge());
+            if (animalDetails.getSex() != null) animal.setSex(animalDetails.getSex());
+            if (animalDetails.getDescription() != null) animal.setDescription(animalDetails.getDescription());
+            if (animalDetails.getLocation() != null) animal.setLocation(animalDetails.getLocation());
+            if (animalDetails.getType() != null) animal.setType(animalDetails.getType());
+            if (animalDetails.getPhotos() != null) animal.setPhotos(animalDetails.getPhotos());
+            if (animalDetails.getShelterId() != null) animal.setShelterId(animalDetails.getShelterId());
+            if (animalDetails.isAvailableForAdoption() != animal.isAvailableForAdoption()) {
+                animal.setAvailableForAdoption(animalDetails.isAvailableForAdoption());
+            }
+            if (animalDetails.isSterilization() != animal.isSterilization()) {
+                animal.setSterilization(animalDetails.isSterilization());
+            }
+
+            return animalRepository.save(animal);
+        } else {
+            return null;
+        }
     }
 }

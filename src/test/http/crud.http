@@ -1,0 +1,42 @@
+### GET request to example server
+GET http://localhost:8080/api/v1/animals
+
+### GET first one
+GET http://localhost:8080/api/v1/animals/3
+
+### DELETE third one
+DELETE http://localhost:8080/api/v1/animals/67d6f3fa6084e31b25cd0a31
+
+### Create one
+POST http://localhost:8080/api/v1/animals
+Content-Type: application/json
+
+{
+  "name": "name4",
+  "age": 2,
+  "sex": "M",
+  "description": "description3",
+  "location": "location3",
+  "type": "dog",
+  "photos": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww",
+  "shelterId": "1",
+  "sterilization": true,
+  "availableForAdoption": false
+}
+
+#### Update one
+PUT http://localhost:8080/api/v1/animals/67d6f3fa6084e31b25cd0a31
+Content-Type: application/json
+
+{
+  "name": "Dave The Magical Cheese Wizard))"
+}
+
+### GET User
+GET http://localhost:8080/api/v1/animals/hello/user
+
+### GET Admin
+GET http://localhost:8080/api/v1/animals/hello/admin
+
+### GET Unknown
+GET http://localhost:8080/api/v1/animals/hello/unknown

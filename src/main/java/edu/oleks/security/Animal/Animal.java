@@ -76,6 +76,14 @@ public class Animal {
                 '}';
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     public String getName() {
         return name;
     }

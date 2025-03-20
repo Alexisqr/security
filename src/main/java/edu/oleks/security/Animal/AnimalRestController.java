@@ -39,8 +39,22 @@ public class AnimalRestController {
         return animalService.create(animal);
     }
 
-    @PutMapping
-    public Animal update(@RequestBody Animal animal) {
-        return animalService.update(animal);
+    @PutMapping("/{id}")
+    public Animal updateAnimal(@PathVariable("id") String id, @RequestBody Animal animalDetails) {
+        return animalService.update(id, animalDetails);
+    }
+    @GetMapping("/hello/user")
+    public String helloUser() {
+        return "Hello User!";
+    }
+
+    @GetMapping("hello/admin")
+    public String helloAdmin() {
+        return "Hello Admin!";
+    }
+
+    @GetMapping("hello/unknown")
+    public String helloUnknown() {
+        return "Hello Unknown!";
     }
 }
