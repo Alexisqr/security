@@ -1,18 +1,26 @@
 ### GET request to example server
 GET http://localhost:8080/api/v1/animals
+Authorization: Basic admin admin
+Accept: application/json
 
 ### GET first one
 GET http://localhost:8080/api/v1/animals/3
+Authorization: Basic admin admin
+Accept: application/json
 
 ### DELETE third one
-DELETE http://localhost:8080/api/v1/animals/del/67d6f3fa6084e31b25cd0a31
+DELETE http://localhost:8080/api/v1/animals/del/67dd436bdb60123ffad7173f
+Authorization: Basic admin admin
+Accept: application/json
 
 ### Create one
 POST http://localhost:8080/api/v1/animals
+Authorization: Basic admin admin
+Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "name4",
+  "name": "name4131",
   "age": 2,
   "sex": "M",
   "description": "description3",
@@ -24,19 +32,25 @@ Content-Type: application/json
   "availableForAdoption": false
 }
 
+
 #### Update one
-PUT http://localhost:8080/api/v1/animals/67d6f3fa6084e31b25cd0a31
+PUT http://localhost:8080/api/v1/animals/67dd2ff1db60123ffad7173e
 Content-Type: application/json
+Authorization: Basic admin admin
+Accept: application/json
 
 {
-  "name": "Dave The Magical Cheese Wizard))"
+  "name": "Dave The Magical Cheese Wizard2))"
 }
 
 ### GET User
 GET http://localhost:8080/api/v1/animals/hello/user
-
+Authorization: Basic admin admin
 ### GET Admin
 GET http://localhost:8080/api/v1/animals/hello/admin
+Authorization: Basic admin admin
+
 
 ### GET Unknown
 GET http://localhost:8080/api/v1/animals/hello/unknown
+Authorization: Basic admin admin

@@ -13,6 +13,7 @@ import java.util.List;
 @version  1.0.0
 @since 19.02.2025 - 22.57
 */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/animals")
 @AllArgsConstructor
@@ -29,7 +30,7 @@ public class AnimalRestController {
     public Animal getOneItem(@PathVariable String id) {
         return animalService.getById(id);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/del/{id}")
     public void delete(@PathVariable String id) {
         animalService.deleteById(id);
     }
