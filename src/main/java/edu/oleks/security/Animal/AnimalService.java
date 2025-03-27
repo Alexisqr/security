@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 @author   oleksandra
@@ -37,6 +38,18 @@ public class AnimalService {
 
     public Animal getById(String id) {
         return animalRepository.findById(id).orElse(null);
+    }
+
+    public List<Animal> getByLocation(String location) {
+        return animalRepository.findAll().stream()
+                .filter(animal -> location.equalsIgnoreCase(animal.getLocation()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Animal> getBySex(String sex) {
+        return animalRepository.findAll().stream()
+                .filter(animal -> sex.equalsIgnoreCase(animal.getSex()))
+                .collect(Collectors.toList());
     }
 
     public void deleteById(String id) {
