@@ -12,7 +12,9 @@ import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 
+@Getter
 @Document
 public class Animal {
 
@@ -22,13 +24,16 @@ public class Animal {
     private int age;
     private String sex;
     private String description;
-    @Getter
     private String location;
     private String type;
     private String photos;
     private boolean isAvailableForAdoption;
     private String shelterId;
     private boolean sterilization;
+    private LocalDateTime createdAt;
+    private String createdBy;
+    private LocalDateTime updatedAt;
+    private String updatedBy;
 
     public Animal() {}
 

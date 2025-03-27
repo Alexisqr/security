@@ -30,6 +30,14 @@ public class AnimalRestController {
     public Animal getOneItem(@PathVariable String id) {
         return animalService.getById(id);
     }
+    @GetMapping("/location/{location}")
+    public List<Animal> getAnimalsByLocation(@PathVariable String location) {
+        return animalService.getByLocation(location);
+    }
+    @GetMapping("/sex/{sex}")
+    public List<Animal> getAnimalsBySex(@PathVariable String sex) {
+        return animalService.getBySex(sex);
+    }
     @DeleteMapping("/del/{id}")
     public void delete(@PathVariable String id) {
         animalService.deleteById(id);
