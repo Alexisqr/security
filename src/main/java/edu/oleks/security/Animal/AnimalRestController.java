@@ -1,7 +1,9 @@
 package edu.oleks.security.Animal;
 
+import jakarta.annotation.security.PermitAll;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,45 +25,55 @@ public class AnimalRestController {
     private AnimalService animalService;
 
     @GetMapping
+    @PermitAll
     public List<Animal> getItems() {
         return animalService.getAll();
     }
+
     @GetMapping("/{id}")
+    @PermitAll
     public Animal getOneItem(@PathVariable String id) {
         return animalService.getById(id);
     }
+
     @GetMapping("/location/{location}")
+    @PreAuthorize("hasAnyRole('USER','ADNIN','SUPERADMIN')")
     public List<Animal> getAnimalsByLocation(@PathVariable String location) {
         return animalService.getByLocation(location);
     }
+    @PreAuthorize("hasAnyRole('USER','ADNIN','SUPERADMIN')")
     @GetMapping("/sex/{sex}")
     public List<Animal> getAnimalsBySex(@PathVariable String sex) {
         return animalService.getBySex(sex);
     }
     @DeleteMapping("/del/{id}")
+    @PreAuthorize("hasAnyRole('SUPERADMIN')")
     public void delete(@PathVariable String id) {
         animalService.deleteById(id);
     }
-
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADNIN','SUPERADMIN')")
     public Animal create(@RequestBody Animal animal) {
         return animalService.create(animal);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADNIN','SUPERADMIN')")
     public Animal updateAnimal(@PathVariable("id") String id, @RequestBody Animal animalDetails) {
         return animalService.update(id, animalDetails);
     }
     @GetMapping("/hello/user")
+    @PreAuthorize("hasRole('USER')")
     public String helloUser() {
         return "Hello User!";
     }
 
     @GetMapping("hello/admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public String helloAdmin() {
         return "Hello Admin!";
     }
-
+    @PermitAll
     @GetMapping("hello/unknown")
     public String helloUnknown() {
         return "Hello Unknown!";
