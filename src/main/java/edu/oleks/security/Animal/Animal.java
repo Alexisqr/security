@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Document
-public class Animal {
+public class Animal extends AuditMetaData {
 
     @Id
     private String id;
