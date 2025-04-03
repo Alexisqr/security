@@ -30,10 +30,7 @@ public class Animal extends AuditMetaData {
     private boolean isAvailableForAdoption;
     private String shelterId;
     private boolean sterilization;
-    private LocalDateTime createdAt;
-    private String createdBy;
-    private LocalDateTime updatedAt;
-    private String updatedBy;
+
 
     public Animal() {}
 

@@ -1,8 +1,7 @@
-package edu.oleks.security.сonfig;
+package edu.oleks.security.сon;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
@@ -16,10 +15,10 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @EnableMongoAuditing
 @Configuration
 public class AuditionConfig {
+
     @Bean
     public AuditorAware<String> auditorAware() {
-        return new AuditorAwarelmpl();
+        return new AuditorAwareImpl();
     }
-
 
 }

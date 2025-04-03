@@ -1,13 +1,15 @@
 package edu.oleks.security.Animal;
 
-import com.mongodb.lang.Nullable;
+
+import com.mongodb.lang.NonNull;
+import io.micrometer.common.lang.Nullable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.mongodb.lang.NonNull;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
@@ -18,22 +20,24 @@ import java.time.LocalDateTime;
 @version  1.0.0
 @since 03.04.2025 - 11.12
 */
-@NoArgsConstructor
 @Data
-
+@NoArgsConstructor
 public class AuditMetaData {
+
     @CreatedDate
     @NonNull
     private LocalDateTime createdDate;
+
     @CreatedBy
     @NonNull
+    @Field("createdBy")
     private String createdBy;
+
     @LastModifiedDate
     @Nullable
     private LocalDateTime lastModifiedDate;
-    @Nullable
+
     @LastModifiedBy
+    @Nullable
     private String lastModifiedBy;
-
-
 }
