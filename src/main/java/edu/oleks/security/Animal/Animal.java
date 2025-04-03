@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Document
-public class Animal {
+public class Animal extends AuditMetaData {
 
     @Id
     private String id;
@@ -30,10 +30,7 @@ public class Animal {
     private boolean isAvailableForAdoption;
     private String shelterId;
     private boolean sterilization;
-    private LocalDateTime createdAt;
-    private String createdBy;
-    private LocalDateTime updatedAt;
-    private String updatedBy;
+
 
     public Animal() {}
 

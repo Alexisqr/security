@@ -1,4 +1,4 @@
-package edu.oleks.security.сonfig;
+package edu.oleks.security.сon;
 
 /*
 @author   oleksandra
