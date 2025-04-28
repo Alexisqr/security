@@ -25,23 +25,21 @@ public class AnimalRestController {
     private AnimalService animalService;
 
     @GetMapping
-    @PermitAll
     public List<Animal> getItems() {
         return animalService.getAll();
     }
 
     @GetMapping("/{id}")
-    @PermitAll
     public Animal getOneItem(@PathVariable String id) {
         return animalService.getById(id);
     }
 
     @GetMapping("/location/{location}")
-    @PreAuthorize("hasAnyRole('USER','ADNIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPERADMIN')")
     public List<Animal> getAnimalsByLocation(@PathVariable String location) {
         return animalService.getByLocation(location);
     }
-    @PreAuthorize("hasAnyRole('USER','ADNIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPERADMIN')")
     @GetMapping("/sex/{sex}")
     public List<Animal> getAnimalsBySex(@PathVariable String sex) {
         return animalService.getBySex(sex);
@@ -52,13 +50,13 @@ public class AnimalRestController {
         animalService.deleteById(id);
     }
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADNIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','SUPERADMIN')")
     public Animal create(@RequestBody Animal animal) {
         return animalService.create(animal);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADNIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','SUPERADMIN')")
     public Animal updateAnimal(@PathVariable("id") String id, @RequestBody Animal animalDetails) {
         return animalService.update(id, animalDetails);
     }
