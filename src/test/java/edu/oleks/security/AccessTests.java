@@ -71,28 +71,28 @@ public class AccessTests {
     //Анонімний користувач може зайти на hello/unknown
     @Test
     @WithAnonymousUser
-    void whenAnonymousAccessHelloUnknown_thenStatusOk() throws Exception {
+    void whenAnonymousAccessHelloUnknownThenStatusOk() throws Exception {
         mockMvc.perform(get("/api/v1/animals/hello/unknown"))
                 .andExpect(status().isOk());
     }
     //USER має доступ до hello/user
     @Test
     @WithMockUser(username = "user", password = "user", roles = {"USER"})
-    void whenUserAccessHelloUser_thenStatusOk() throws Exception {
+    void whenUserAccessHelloUserThenStatusOk() throws Exception {
         mockMvc.perform(get("/api/v1/animals/hello/user"))
                 .andExpect(status().isOk());
     }
     //USER не має доступу до hello/admin
     @Test
     @WithMockUser(username = "user", password = "user", roles = {"USER"})
-    void whenUserAccessHelloAdmin_thenStatusForbidden() throws Exception {
+    void whenUserAccessHelloAdminThenStatusForbidden() throws Exception {
         mockMvc.perform(get("/api/v1/animals/hello/admin"))
                 .andExpect(status().isForbidden());
     }
     // Admin має доступ до створення тварин
     @Test
     @WithMockUser(username = "admin", password = "admin", roles = {"ADMIN"})
-    void whenAdminCreatesAnimal_thenStatusCreated() throws Exception {
+    void whenAdminCreatesAnimalThenStatusCreated() throws Exception {
         String newAnimalJson = """
         {
                        "name": "name4",
@@ -118,21 +118,21 @@ public class AccessTests {
     //USER має доступ до пошуку тварин за локацією
     @Test
     @WithMockUser(username = "user", password = "user", roles = {"USER"})
-    void whenUserAccessAnimalsByLocation_thenStatusOk() throws Exception {
+    void whenUserAccessAnimalsByLocationThenStatusOk() throws Exception {
         mockMvc.perform(get("/api/v1/animals/location/location"))
                 .andExpect(status().isOk());
     }
     //Admin має доступ до пошуку тварин за статтю
     @Test
     @WithMockUser(username = "admin", roles = {"ADMIN"})
-    void whenAdminAccessGetBySex_thenOk() throws Exception {
+    void whenAdminAccessGetBySexThenOk() throws Exception {
         mockMvc.perform(get("/api/v1/animals/sex/M"))
                 .andExpect(status().isOk());
     }
     //Superadmin може видалити тварину
     @Test
     @WithMockUser(username = "superadmin", password = "superadmin", roles = {"SUPERADMIN"})
-    void whenSuperAdminDeletesAnimal_thenStatusOk() throws Exception {
+    void whenSuperAdminDeletesAnimalThenStatusOk() throws Exception {
         mockMvc.perform(delete("/api/v1/animals/del/1"))
                 .andExpect(status().isOk());
     }
