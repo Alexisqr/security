@@ -1,5 +1,7 @@
 package edu.oleks.security.Animal;
 
+
+import edu.oleks.security.security.SecurityConfig;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
+    private SecurityConfig securityConfig;
     private List<Animal> animals = new ArrayList<Animal>();
 
     @PostConstruct
