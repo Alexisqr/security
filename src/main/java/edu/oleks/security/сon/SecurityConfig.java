@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -27,6 +28,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     public static Advisor preAuthorizeMethodInterceptor(){
@@ -50,7 +52,7 @@ public class SecurityConfig {
                                 //.requestMatchers(HttpMethod.POST, "/api/v1/animals").hasAnyRole( "ADMIN","SUPERADMIN")
                                 //.requestMatchers(HttpMethod.PUT, "/api/v1/animals/{id}").hasAnyRole( "ADMIN","SUPERADMIN")
                                 //.requestMatchers(HttpMethod.DELETE, "/api/v1/animals/del/{id}").hasAnyRole( "SUPERADMIN")
-                                .requestMatchers(HttpMethod.GET, "/api/v1/animals").permitAll()
+
                                 .requestMatchers(HttpMethod.GET, "/api/v1/animals/{id}").permitAll()
                                 //.requestMatchers("/api/v1/animals/hello/user").hasRole("USER")
                                 .requestMatchers("/api/v1/animals/hello/unknown").permitAll()
