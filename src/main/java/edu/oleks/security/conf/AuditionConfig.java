@@ -1,4 +1,4 @@
-package edu.oleks.security.сon;
+package edu.oleks.security.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
