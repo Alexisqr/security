@@ -8,5 +8,5 @@ package edu.oleks.security.user;
 @since 01.05.2025 - 15.09
 */
 public enum Role {
-    ADMIN, USER, SUPERADMIN
+    ROLE_ADMIN, ROLE_USER, ROLE_SUPERADMIN
 }

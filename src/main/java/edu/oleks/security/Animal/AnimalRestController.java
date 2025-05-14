@@ -35,39 +35,39 @@ public class AnimalRestController {
     }
 
     @GetMapping("/location/{location}")
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN','ROLE_SUPERADMIN')")
     public List<Animal> getAnimalsByLocation(@PathVariable String location) {
         return animalService.getByLocation(location);
     }
-    @PreAuthorize("hasAnyRole('USER','ADMIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER','ROLE_ADMIN','ROLE_SUPERADMIN')")
     @GetMapping("/sex/{sex}")
     public List<Animal> getAnimalsBySex(@PathVariable String sex) {
         return animalService.getBySex(sex);
     }
     @DeleteMapping("/del/{id}")
-    @PreAuthorize("hasAnyRole('SUPERADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_SUPERADMIN')")
     public void delete(@PathVariable String id) {
         animalService.deleteById(id);
     }
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERADMIN')")
     public Animal create(@RequestBody Animal animal) {
         return animalService.create(animal);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','SUPERADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN','ROLE_SUPERADMIN')")
     public Animal updateAnimal(@PathVariable("id") String id, @RequestBody Animal animalDetails) {
         return animalService.update(id, animalDetails);
     }
     @GetMapping("/hello/user")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public String helloUser() {
         return "Hello User!";
     }
 
     @GetMapping("hello/admin")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String helloAdmin() {
         return "Hello Admin!";
     }
